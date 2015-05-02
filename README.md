@@ -27,10 +27,11 @@ Install Node deps:
 
 Install database from bernie_db.sql
 
-copy .env.example to .env and add vars
+copy `.env.example` to `.env` and add vars
 
 
 ###More Resources
 
 * [12 Factor App](http://12factor.net/config)
+
 
