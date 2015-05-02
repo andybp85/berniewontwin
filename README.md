@@ -1,5 +1,6 @@
 #BernieWontWin
 
+
 ### Built on [yeoman peace](https://github.com/adjavaherian/generator-peace) feat:
 
 * [html5boilerplate](https://html5boilerplate.com/)
@@ -25,7 +26,7 @@ Install Node deps:
 
 `node install`
 
-Install database from bernie_db.sql
+Install database from `bernie_db.sql`
 
 copy `.env.example` to `.env` and add vars
 
