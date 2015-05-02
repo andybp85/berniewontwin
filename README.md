@@ -1,7 +1,5 @@
 #BernieWontWin
 
-=====
-
 ### Built on [yeoman peace](https://github.com/adjavaherian/generator-peace) feat:
 
 * [html5boilerplate](https://html5boilerplate.com/)
@@ -35,3 +33,4 @@ copy .env.example to .env and add vars
 ###More Resources
 
 * [12 Factor App](http://12factor.net/config)
+
