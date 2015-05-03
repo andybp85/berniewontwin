@@ -1,7 +1,7 @@
 {
-  "name": "appname",
-  "version": "0.1.0",
-  "description": "My Wicked Prototype",
+  "name": "BernieWontWin.com",
+  "version": "0.5.0",
+  "description": "Without you!",
   "main": "app/scripts/main.js",
   "scripts": {
     "test": "make test"
@@ -11,19 +11,34 @@
     "prototype",
     "development"
   ],
-  "author": "you",
+  "author": "Andrew Stanish",
   "license": "GPL",
   "repository": {
     "type": "git",
-    "url": "git://github.com/username/repository.git"
+    "url": "git://github.com/andybp85/berniewontwin.git"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-newer": "^0.7.0",
+    "grunt-wiredep": "^2.0.0",
+    "grunt-concurrent": "^0.5.0",
     "grunt-contrib-connect": "^0.8.0",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-htmlmin": "^0.3.0",
+    "grunt-contrib-imagemin": "^0.8.1",
+    "grunt-autoprefixer": "^0.7.3",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-filerev": "^0.2.1",
+    "grunt-cssnano": "^1.0.0",
     "grunt-open": "^0.2.3",
-    "grunt-postcss": "^0.3.0",
-    "matchdep": "^0.3.0",
-    "open": "0.0.5"
+    "grunt-svgmin": "^0.4.0",
+    "grunt-usemin": "^2.1.``1",
+    "grunt-google-cdn": "^0.4.0",
+    "jshint-stylish": "^0.2.0",
+    "time-grunt": "^0.3.1"
   }
 }
