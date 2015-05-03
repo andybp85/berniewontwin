@@ -60,7 +60,7 @@ module.exports = function(grunt) {
             },
             styles: {
                 files: ['<%= config.app %>/styles/{,*/}*.css'],
-                tasks: ['newer:copy:styles', 'cssnano']
+                tasks: ['newer:copy:styles', 'uncss', 'cssnano']
             },
             livereload: {
                 options: {
@@ -127,6 +127,17 @@ module.exports = function(grunt) {
             ]
           }
         },
+
+        uncss: {
+          dist: {
+            options: {
+              stylesheets: ['../.tmp/styles/*.css']
+            },
+            files: {
+              '.tmp/styles/*.css': ['app/**/*.html']
+            }
+          }
+        },        
 
         // Reads HTML for usemin blocks to enable smart builds that automatically
         // concat, minify and revision files. Creates configurations in memory so
@@ -270,11 +281,11 @@ module.exports = function(grunt) {
       'concurrent:dist',
       'autoprefixer',
       'concat',
-      'ngAnnotate',
-      'copy:dist',
-      'cdnify',
+      'uncss',
       'cssnano',
+      'cdnify',
       'uglify',
+      'copy:dist',
       'filerev',
       'usemin',
       'htmlmin'
