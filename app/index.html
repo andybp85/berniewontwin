@@ -16,14 +16,15 @@
 
     <!-- Custom CSS -->
     <link href="styles/main.css" rel="stylesheet">
-
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 
+    <script src="scripts/smoothscroll.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -39,19 +40,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">BernieWontWin.org</a>
+                <a class="navbar-brand smoothScroll" href="#">BernieWontWin.org</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#about">About</a>
+                        <a href="#whynot" class="smoothScroll">Why Not?</a>
                     </li>
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="#whois" class="smoothScroll">Who is He?</a>
                     </li>
                     <li>
-                        <a href="#contact">Contact</a>
+                        <a href="#isReal" class="smoothScroll">A Vote For Bernie Is Real</a>
                     </li>
                 </ul>
             </div>
@@ -73,10 +74,10 @@
     <!-- Page Content -->
     <div class="container">
 
-        <hr class="featurette-divider">
+        <hr class="featurette-divider" id="whynot">
 
         <!-- First Featurette -->
-        <div class="featurette" id="about">
+        <div class="featurette">
             <img class="featurette-image img-circle img-responsive pull-right" src="images/Bernie_Sanders_senate_pic.jpg"/>
             <h2 class="featurette-heading">Why more than a year before the election is Bernie
                 <span class="text-muted">already being written off?</span>
@@ -84,24 +85,25 @@
             <p class="lead"><a href="http://www.nbcnews.com/meet-the-press/bernie-sanders-wont-win-his-ideas-might-n349991" target="_blank">Here</a>, <a href="http://www.nationaljournal.com/energy/greens-love-bernie-sanders-but-that-won-t-be-enough-to-endorse-him-20150429" target="_blank">here</a>, <a href="http://www.washingtonpost.com/blogs/the-fix/wp/2015/04/29/bernie-sanders-isnt-going-to-be-president-but-he-matters-anyway/" target="_blank">here</a> and <a href="https://www.commentarymagazine.com/2015/04/29/no-bernie-sanders-will-not-make-the-election-a-battle-of-ideas/" target="_blank">here</a> and <a href="http://www.salon.com/2014/06/03/no_bernie_sanders_should_not_run_for_president_why_his_challenge_would_achieve_little/" target="_blank">pretty much everywhere else you turn</a>, everyone in the media has already written off Bernie. Why is that? What's wrong with Bernie Sanders?</p>
         </div>
 
-        <hr class="featurette-divider">
+        <hr class="featurette-divider" id="whois">
 
         <!-- Second Featurette -->
-        <div class="featurette" id="services">
+        <div class="featurette" >
             <img class="featurette-image img-circle img-responsive pull-left" src="images/Bernie_honest.jpg"/>
             <h2 class="featurette-heading">He has always represented the people and focuses on
                 <span class="text-muted">the shrinking middle class as well as the income gap.</span>
             </h2>
-            <p class="lead">With his 16 years in the House of Representatives, Bernie Sanders is the longest serving independent member of Congress <a href="http://www.sanders.senate.gov/download/independent-members-of-congress?inline=file" target="_blank">in American History</a>. He strongly opposes <a href="http://www.progressive.org/news/2011/10/170238/bernie-sanders-denounces-free-trade-pacts" target="_blank">trade agreements by corporations</a> that ask for US Tax Breaks then immidiately outsource jobs overseas <a href="http://www.sanders.senate.gov/download/the-trans-pacific-trade-tpp-agreement-must-be-defeated?inline=file" target="_blank">such as the Trans-Pacific Trade Agreement</a>. Even going as far as to expose <a href="http://www.politicususa.com/2012/10/25/bernie-sanders-exposes-18-ceos-trillions-bailouts-evaded-taxes-outsourced-jobs.html" target="_blank">18 CEOs who took trillions in bailouts, evaded their taxes and then outsourced those newly created jobs</a>. He has pushed to <a href="http://www.occupydemocrats.com/bernie-sanders-introduces-bill-to-end-offshore-tax-havens-and-outsourcing-of-jobs/" target="_blank">end off-shore tax havens</a> for corporations that also choose to outsource American jobs. He <a href="http://www.sanders.senate.gov/newsroom/press-releases/sanders-votes-against-patriot-act-extension" target="_blank"> has been against extending the invasive "Patriot Act"</a> which continues to cost American's their civil liberties daily both domestically and abroad. He vows to <a href="http://www.nationaljournal.com/tech/president-bernie-sanders-would-dismantle-nsa-spying-20150501" target="_blank">dismantle the equally invasive NSA Spy Network</a>. He believes anyone who works 40 hours a week <a href="http://thehill.com/blogs/ballot-box/dem-primaries/240871-sanders-calls-minimum-wage-a-starvation-wage" target="_blank">doesn't deserve to live in poverty</a>. What about these views isn't inline with the American people? As Bernie himself put it... "If you raise the issues that are on the hearts and minds of the American people...if you try and put together a movement which says we got to stand together as a people say...our country belong[s] to all of us and not the billionaire class...that's not raising an issue, that's winning elections".</p>
+            <p class="lead">With his 16 years in the House of Representatives, Bernie Sanders is the longest serving independent member of Congress <a href="http://www.sanders.senate.gov/download/independent-members-of-congress?inline=file" target="_blank">in American History</a>. He was elected as the mayor of Burlington, VT back in 1981 by only 10 votes. He then stayed on for four terms and was elected to Vermonts only seat in the House of Representatives in 1990. He moved on to the Senate in 2006 where he won re-election two years ago with 71% of the vote. He strongly opposes <a href="http://www.progressive.org/news/2011/10/170238/bernie-sanders-denounces-free-trade-pacts" target="_blank">trade agreements by corporations</a> that ask for US Tax Breaks then immidiately outsource jobs overseas <a href="http://www.sanders.senate.gov/download/the-trans-pacific-trade-tpp-agreement-must-be-defeated?inline=file" target="_blank">such as the Trans-Pacific Trade Agreement</a>. Even going as far as to expose <a href="http://www.politicususa.com/2012/10/25/bernie-sanders-exposes-18-ceos-trillions-bailouts-evaded-taxes-outsourced-jobs.html" target="_blank">18 CEOs who took trillions in bailouts, evaded their taxes and then outsourced those newly created jobs</a>. He has pushed to <a href="http://www.occupydemocrats.com/bernie-sanders-introduces-bill-to-end-offshore-tax-havens-and-outsourcing-of-jobs/" target="_blank">end off-shore tax havens</a> for corporations that also choose to outsource American jobs. He <a href="http://www.sanders.senate.gov/newsroom/press-releases/sanders-votes-against-patriot-act-extension" target="_blank"> has been against extending the invasive "Patriot Act"</a> which continues to cost American's their civil liberties daily both domestically and abroad. He vows to <a href="http://www.nationaljournal.com/tech/president-bernie-sanders-would-dismantle-nsa-spying-20150501" target="_blank">dismantle the equally invasive NSA Spy Network</a> which threatens our freedom of speech and press. He believes anyone who works 40 hours a week <a href="http://thehill.com/blogs/ballot-box/dem-primaries/240871-sanders-calls-minimum-wage-a-starvation-wage" target="_blank">doesn't deserve to live in poverty</a>. </p>
+        <p class="lead">What about these views isn't inline with the American people? <blockquote>"If you raise the issues that are on the hearts and minds of the American people...if you try and put together a movement which says we got to stand together as a people say...our country belong[s] to all of us and not the billionaire class...that's not raising an issue, that's winning elections".<br/> <i class="pull-right">-Bernie Sanders</i></blockquote></p>
             <div class="embed-responsive embed-responsive-16by9">
             <iframe src="http://player.theplatform.com/p/2E2eJC/nbcNewsOffsite?guid=f_dc_sanders_2016run_150430" width="100%" height="500" scrolling="no" frameborder="0"></iframe>
             </div>
         </div>
 
-        <hr class="featurette-divider">
+        <hr class="featurette-divider" id="isReal">
 
         <!-- Third Featurette -->
-        <div class="featurette" id="contact">
+        <div class="featurette">
             <img class="featurette-image img-circle img-responsive pull-right" src="images/bernie_sanders_podium.jpg"/>
             <h2 class="featurette-heading">A Vote For Bernie is Real.
                 <span class="text-muted">We Need To Make Bernie The Democratic Nominee.</span>
@@ -112,8 +114,15 @@
             <p>A Vote for Hillary Clinton is a vote for another 4 to 8 years of corporate sponsored politics. Take one look at the stark comparison between her backs and Bernie's:</p>
             <br/>
             <a href="images/clinton_donors_vs_sander_donors.png" target="_blank"><img src="images/clinton_donors_vs_sander_donors.png" class="img-responsive"/></a>
-            <p class="lead">"The real question is, can any candidate in this country who represents working families, who is not a billionaire, who is not beholden to big corporations — in this day and age, can that candidate win an election?" - Bernie Sanders (<a href="http://www.cnn.com/2015/04/30/politics/bernie-sanders-presidential-run-first-interview/" target="_blank">source</a>)</p>
-        <hr class="featurette-divider">
+            
+        <hr class="featurette-divider" id="needshelp">
+            <!-- Fourth Featurette -->
+            <div class="featurette">
+                <img class="featurette-image img-circle img-responsive pull-right" src="images/bernie_sanders_podium.jpg"/>
+            <h2 class="featurette-heading">The time is now, we need a revolution
+                <span class="text-muted">We need Bernie Sanders</span>
+            </h2>
+            <p class="lead">This will not be easy, but Bernie Sanders is no stranger to a political uphill battle. In what would be his final term as Mayor of Burlington, Bernie won against candidates endorsed by both major political parties. When Bernie announced he was runnig for President, Mayor of Burlington Miro Weinberger stated he would support Hillary Clinton. Not surprising, Weinberger <a href="http://www.burlingtonfreepress.com/story/news/local/2015/02/02/weinberger-goodkind-burlington-mayor-campaign-funds/22772621/" target="_blank">ran on a campaign bankrolled by local contractors and developers</a> making it a war of funds, not of ideas. Somethings never change but our political system does not have to be one of them. <blockquote>"The real question is, can any candidate in this country who represents working families, who is not a billionaire, who is not beholden to big corporations — in this day and age, can that candidate win an election?" <i class="pull-right">- Bernie Sanders (<a href="http://www.cnn.com/2015/04/30/politics/bernie-sanders-presidential-run-first-interview/" target="_blank">source</a>)</i></blockquote></p>
             <img src="images/Bernie_wins_burlington_mayor86.png" class="img-responsive center-block"/>
         </div>
 
@@ -133,10 +142,9 @@
 
     <!-- jQuery -->
     <script src="scripts/main.js"></script>
-
+    
     <!-- Bootstrap Core JavaScript -->
     <script src="scripts/bootstrap.js"></script>
-
 </body>
 
 </html>
