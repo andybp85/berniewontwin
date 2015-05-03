@@ -13,8 +13,6 @@ body {
     width: 100%;
     text-align: center;
     background: url('../images/american_flag.jpg') no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
 }

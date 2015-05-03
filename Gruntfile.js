@@ -2,11 +2,11 @@
 
 module.exports = function(grunt) {
 
-    // Load Grunt tasks declared in the package.json file
-    // require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-
-     // Load grunt tasks automatically
+    // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
+
+    // Time how long tasks take. Can help when optimizing build times
+    require('time-grunt')(grunt);
 
     // Configurable paths
     var config = {
@@ -19,31 +19,6 @@ module.exports = function(grunt) {
     grunt.initConfig({
 
         config: config,
-
-        // The actual grunt server settings
-        connect: {
-          options: {
-            port: 9000,
-            // Change this to '0.0.0.0' to access the server from outside.
-            hostname: 'localhost',
-            livereload: 35729
-          },
-          livereload: {
-            options: {
-              open: true,
-              middleware: function (connect) {
-                return [
-                  connect.static('.tmp'),
-                  connect().use(
-                    '/bower_components',
-                    connect.static('./bower_components')
-                  ),
-                  connect.static(appConfig.app)
-                ];
-              }
-            }
-          }
-        },
 
         // Watches files for changes and runs tasks based on the changed files
         watch: {
@@ -73,6 +48,91 @@ module.exports = function(grunt) {
                 ]
             }
         },
+
+        // Empties folders to start fresh
+        clean: {
+          dist: {
+            files: [{
+              dot: true,
+              src: [
+                '.tmp',
+                '<%= config.dist %>/{,*/}*',
+                '!<%= config.dist %>/.git*'
+              ]
+            }]
+          },
+          server: '.tmp'
+        },
+
+        // Add vendor prefixed styles
+        autoprefixer: {
+          options: {
+            browsers: ['last 1 version']
+          },
+          dist: {
+            files: [{
+              expand: true,
+              cwd: '.tmp/styles/',
+              src: '{,*/}*.css',
+              dest: '.tmp/styles/'
+            }]
+          }
+        },
+
+        // Automatically inject Bower components into the app
+        wiredep: {
+          app: {
+            src: ['<%= config.app %>/index.html'],
+            ignorePath:  /\.\.\//
+          }
+        },
+
+        // Run some tasks in parallel to speed up the build process
+        concurrent: {
+          server: [
+            'copy:styles'
+          ],
+          test: [
+            'copy:styles'
+          ],
+          dist: [
+            'copy:styles',
+            'imagemin',
+            'svgmin'
+          ]
+        },
+
+        // Copies remaining files to places other tasks can use
+        copy: {
+          dist: {
+            files: [{
+              expand: true,
+              dot: true,
+              cwd: '<%= config.app %>',
+              dest: '<%= config.dist %>',
+              src: [
+                '*.{ico,png,txt}',
+                '.htaccess',
+                '*.html',
+                'partials/{,*/}*.html',
+                'images/{,*/}*.{webp}',
+                'fonts/*'
+              ]
+            }, {
+              expand: true,
+              cwd: '.tmp/images',
+              dest: '<%= config.dist %>/images',
+              src: ['generated/*']
+            }]
+          },
+          styles: {
+            expand: true,
+            cwd: '<%= config.app %>/styles',
+            dest: '.tmp/styles/',
+            src: '{,*/}*.css'
+          }
+        },
+
         dist: {
           options: {
             open: true,
@@ -91,28 +151,6 @@ module.exports = function(grunt) {
               'Gruntfile.js',
               '<%= config.app %>/scripts/{,*/}*.js'
             ]
-          },
-
-        // Empties folders to start fresh
-        clean: {
-          dist: {
-            files: [{
-              dot: true,
-              src: [
-                '.tmp',
-                '<%= config.dist %>/{,*/}*',
-                '!<%= config.dist %>/.git*'
-              ]
-            }]
-          },
-          server: '.tmp'
-        },
-
-        // Automatically inject Bower components into the app
-        wiredep: {
-          app: {
-            src: ['<%= config.app %>/index.html'],
-            ignorePath:  /\.\.\//
           }
         },
 
@@ -131,11 +169,21 @@ module.exports = function(grunt) {
         uncss: {
           dist: {
             options: {
-              stylesheets: ['../.tmp/styles/*.css']
+              stylesheets: ['../.tmp/styles/main.css']
             },
             files: {
-              '.tmp/styles/*.css': ['app/**/*.html']
+              '../.tmp/styles/*.css': ['app/**/*.html']
             }
+          }
+        },
+        cssnano: {
+          options: {
+              sourcemap: true
+          },
+          dist: {
+              files: {
+                  'dist/styles/main.css': 'app/styles/main.css'
+              }
           }
         },
 
@@ -150,7 +198,6 @@ module.exports = function(grunt) {
               html: {
                 steps: {
                   js: ['concat', 'uglifyjs'],
-                  css: ['cssnano']
                 },
                 post: {}
               }
@@ -161,7 +208,6 @@ module.exports = function(grunt) {
         // Performs rewrites based on filerev and the useminPrepare configuration
         usemin: {
           html: ['<%= config.dist %>/{,*/}*.html', '<%= config.dist %>/**/*.html', '<%= config.dist %>/**/*.html'],
-          css: ['<%= config.dist %>/styles/{,*/}*.css'],
           js: ['<%= config.dist %>/scripts/{,*/}*.js','<%= config.dist %>/scripts/**/**.js' ],
           options: {
             assetsDirs: ['<%= config.dist %>','<%= config.dist %>/images'],
@@ -170,6 +216,17 @@ module.exports = function(grunt) {
                   [/(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
               ]
             }
+          }
+        },
+
+        imagemin: {
+          dist: {
+            files: [{
+              expand: true,
+              cwd: '<%= config.app %>/images',
+              src: '{,*/}*.{png,jpg,jpeg,gif}',
+              dest: '<%= config.dist %>/images'
+            }]
           }
         },
 
@@ -209,53 +266,31 @@ module.exports = function(grunt) {
           }
         },
 
-        // Copies remaining files to places other tasks can use
-        copy: {
-          dist: {
-            files: [{
-              expand: true,
-              dot: true,
-              cwd: '<%= config.app %>',
-              dest: '<%= config.dist %>',
-              src: [
-                '*.{ico,png,txt}',
-                '.htaccess',
-                '*.html',
-                'partials/{,*/}*.html',
-                'images/{,*/}*.{webp}',
-                'fonts/*'
-              ]
-            }, {
-              expand: true,
-              cwd: '.tmp/images',
-              dest: '<%= config.dist %>/images',
-              src: ['generated/*']
-            }]
+        // The actual grunt server settings
+        connect: {
+          options: {
+            port: 9000,
+            // Change this to '0.0.0.0' to access the server from outside.
+            hostname: 'localhost',
+            livereload: 35729
           },
-          styles: {
-            expand: true,
-            cwd: '<%= config.app %>/styles',
-            dest: '.tmp/styles/',
-            src: '{,*/}*.css'
+          livereload: {
+            options: {
+              open: true,
+              middleware: function (connect) {
+                return [
+                  connect.static('.tmp'),
+                  connect().use(
+                    '/bower_components',
+                    connect.static('./bower_components')
+                  ),
+                  connect.static(config.app)
+                ];
+              }
+            }
           }
-        },
-
-        // Run some tasks in parallel to speed up the build process
-        concurrent: {
-          server: [
-            'copy:styles'
-          ],
-          test: [
-            'copy:styles'
-          ],
-          dist: [
-            'copy:styles',
-            'imagemin',
-            'svgmin'
-          ]
         }
 
-      }
     });
 
 

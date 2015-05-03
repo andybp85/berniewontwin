@@ -12,19 +12,15 @@
 
     <title>Bernie Could Win...</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="styles/bootstrap.css" rel="stylesheet">
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
 
-    <!-- Custom CSS -->
-    <link href="styles/main.css" rel="stylesheet">
-    <!-- Scripts -->
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -168,7 +164,7 @@
           <label class="col-md-4 control-label" for="name"></label>
           <div class="col-md-6">
           <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md">
-          <span class="help-block"><button on onclick="privacy()">Privacy Policy</button></span>
+          <span class="help-block">Privacy Policy</span>
           </div>
         </div>
 
@@ -205,16 +201,33 @@
     </div>
     <!-- /.container -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="scripts/bootstrap.js"></script>
-    <script src="scripts/smoothscroll.js"></script>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/picoModal-2.1.0.min.js"></script>
-    <script>
-    function privacy(){
-        picoModal("Your zipcode is needed to determine you demographic and location so we can get a better idea of where Bernie's support lies." + "Your e-mail address is so that we can occassionally send you updates on the movement, the site and how you can get involved." + "Your name is so we can help show that Bernie's support is real." + "None of your information will ever be sold or provided to a third party. We are in no way affiliated with Bernie Sanders 2016 Official campaign for presidency, we are simply inspired by his message and want to help perpetuate it through as many means necessary. There may come a time where this information will be shared with Bernie's official campaign but there are currently no talks or negotations to do so. -BWW15").show();
-    }
-    </script>
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/raf.js/raf.js"></script>
+    <script src="bower_components/smoothscroll/dist/smoothscroll.js"></script>
+    <script src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
+    <script src="bower_components/picoModal/src/picoModal.js"></script>
+    <script src="bower_components/jquery.transit/jquery.transit.js"></script>
+    <script src="bower_components/jquery.scrollTo/jquery.scrollTo.js"></script>
+    <script src="bower_components/jquery.localScroll/jquery.localScroll.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/main.js"></script>
+
+        <!-- endbuild -->
+
 </body>
 
 </html>
