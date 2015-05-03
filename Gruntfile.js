@@ -80,7 +80,7 @@ module.exports = function(grunt) {
           }
         },
 
-        // Make sure code styles are up to par and there are no obvious mistakes    
+        // Make sure code styles are up to par and there are no obvious mistakes
         jshint: {
           options: {
             jshintrc: '.jshintrc',
@@ -137,7 +137,7 @@ module.exports = function(grunt) {
               '.tmp/styles/*.css': ['app/**/*.html']
             }
           }
-        },        
+        },
 
         // Reads HTML for usemin blocks to enable smart builds that automatically
         // concat, minify and revision files. Creates configurations in memory so
@@ -168,7 +168,7 @@ module.exports = function(grunt) {
             patterns: {
               js: [
                   [/(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
-              ] 
+              ]
             }
           }
         },
