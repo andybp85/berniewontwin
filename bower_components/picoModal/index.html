@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PicoModal Test Page</title>
+        <script src="src/picoModal.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <style type="text/css">
+            .customModal {
+                padding: 20px;
+                background: #fff;
+                border-radius: 10px;
+                color: #333;
+                box-shadow: 0 0 8px 0 #000;
+            }
+            .customShadow {
+                background-color: #000;
+                opacity: 0.8;
+            }
+            .customClose {
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                background: black;
+                padding: 2px 6px;
+                cursor: pointer;
+                border: 3px solid white;
+                color: white;
+                border-radius: 50px;
+                box-shadow: 0 0 8px 0 #000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <p><a href="#" id="createFromString">Simple Create</a></p>
+        <p><a href="#" id="createFromNode">Create From DOM Node</a></p>
+        <p><a href="#" id="withoutClose">Without a close button</a></p>
+        <p><a href="#" id="withoutShadowClose">Without shadow close</a></p>
+        <p><a href="#" id="customStyles">Custom Styles</a></p>
+        <p><a href="#" id="customClasses">Custom Classes</a></p>
+        <p><a href="#" id="closeMethod">Close Method</a></p>
+        <p><a href="#" id="events">Events</a></p>
+        <p><a href="#" id="animate">With Animation</a></p>
+        <p><a href="#" id="destroy">Destroy</a></p>
+
+        <div style="display: none">
+            <div id="contentFromNode">
+                This content was pulled from a dom node
+            </div>
+        </div>
+
+        <script>
+            function buildModal(id, options) {
+                var modal;
+                document.getElementById(id)
+                    .addEventListener("click", function(e) {
+                        e.preventDefault();
+                        if ( !modal ) {
+                            modal = typeof options === "function" ?
+                                options() :
+                                picoModal(options);
+                        }
+                        modal.show();
+                    });
+            }
+
+            buildModal("createFromString",
+                "Ah, the pitter patter of tiny feet in huge combat boots.");
+
+            buildModal("createFromNode",
+                document.getElementById("contentFromNode"));
+
+            buildModal("withoutClose", {
+                content: "Ah, the pitter patter of tiny feet in huge combat boots.",
+                closeButton: false
+            });
+
+            buildModal("withoutShadowClose", {
+                content: "Ah, the pitter patter of tiny feet in huge combat boots.",
+                overlayClose: false
+            });
+
+            buildModal("customStyles", {
+                content: "Ah, the pitter patter of tiny feet in huge combat boots.",
+                overlayStyles: { backgroundColor: "#169", opacity: 0.6 },
+                modalStyles: {
+                    padding: "30px",
+                    background: "#fff",
+                    border: "3px solid #169"
+                },
+                closeHtml: "<span>Close</span>",
+                closeStyles: {
+                    position: "absolute", top: "-3px", right: "-3px",
+                    background: "#fff", padding: "4px 8px", cursor: "pointer",
+                    border: "3px solid #169", fontSize: "10pt"
+                }
+            });
+
+            buildModal("customClasses", {
+                content: "Ah, the pitter patter of tiny feet in huge combat boots.",
+                overlayStyles: {}, modalStyles: {}, closeStyles: {},
+                overlayClass: "customShadow",
+                modalClass: "customModal",
+                closeClass: "customClose"
+            });
+
+            buildModal("closeMethod", function() {
+                return picoModal(
+                    "<p>Ah, the pitter patter of tiny feet in huge combat boots.<p>"
+                    + "<p><a href='#' class='dismiss'>Dismiss</a></p>"
+                ).afterCreate(function(modal){
+                    modal.modalElem().getElementsByClassName("dismiss")[0]
+                        .addEventListener('click', modal.close);
+                });
+            });
+
+            buildModal("events", function() {
+                return picoModal(
+                    "Ah, the pitter patter of tiny feet in huge combat boots."
+                )
+                .afterCreate(function (modal) {
+                    modal.modalElem().innerHTML += "<p>After Create</p>";
+                })
+                .beforeShow(function (modal, event) {
+                    if ( !confirm("Do you want to show this modal?") ) {
+                        event.preventDefault();
+                    }
+                })
+                .afterShow(function (modal) {
+                    modal.modalElem().innerHTML += "<p>After Show</p>";
+                })
+                .beforeClose(function (modal, event) {
+                    if ( !confirm("Do you want to close this modal?") ) {
+                        event.preventDefault();
+                    }
+                })
+                .afterClose(function(modal){
+                    alert("Closed");
+                });
+            });
+
+            buildModal("animate", function() {
+                return picoModal({
+                    content: "Ah, the pitter patter of tiny feet in huge combat boots.",
+                    overlayStyles: function ( styles ) {
+                        styles.opacity = 0;
+                    },
+                    modalStyles: function ( styles ) {
+                        styles.opacity = 0;
+                    }
+                }).afterShow(function(modal){
+                    $(modal.overlayElem()).animate({opacity: .5});
+                    $(modal.modalElem()).animate({opacity: 1});
+                }).beforeClose(function(modal, event) {
+                    event.preventDefault();
+                    $(modal.overlayElem())
+                        .add(modal.modalElem())
+                        .animate(
+                            { opacity: 0 },
+                            { complete: modal.forceClose }
+                        );
+                });
+            });
+
+            buildModal("destroy", function() {
+                return picoModal({
+                    content: "Ah, the pitter patter of tiny feet in huge combat boots."
+                }).afterClose(function(modal){ modal.destroy(); })
+            });
+
+        </script>
+    </body>
+</html>
