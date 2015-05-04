@@ -1,9 +1,13 @@
 <?php
-define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
-if(!IS_AJAX) {
-  header("Location: http://" . $_SERVER['HTTP_HOST']);
-  exit();
-}
+/*define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');*/
+//if(!IS_AJAX) {
+  //header("Location: http://" . $_SERVER['HTTP_HOST']);
+  //exit();
+/*}*/
+
+// DISABLE BEFORE PRODUCTION!!!!
+header("Access-Control-Allow-Origin: *");
+// YES THIS ^^^^
 
 require '../vendor/autoload.php';
 Dotenv::load('..');
@@ -20,12 +24,14 @@ $connectionParams = array(
 $conn = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
 
 if( isset($_POST['email']) ) {
-
-} else {
-  $sql = "SELECT * FROM bernie_signers";
-  $stmt =  $conn->prepare($sql);
+  $sql = "INSERT INTO `bernie_db`.`bernie_signers` (`email`, `name`, `zip`, `get_involved`) VALUES ('?', '?', '?', '?')";
+  $stmt = $conn->prepare($sql);
+  $stmt->bindValue(1, $_POST['email']);
+  $stmt->bindValue(2, $_POST['name']);
+  $stmt->bindValue(3, $_POST['zipcode']);
+  $stmt->bindValue(4, $_POST['getInvolved']);
   $stmt->execute();
-  $results = $stmt->fetchAll();
-
-  echo sizeof($results);
+} else {
+  $results = $conn->fetchColumn("SELECT COUNT(*) FROM bernie_signers", array(1), 0);
+  echo $results;
 }

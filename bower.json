@@ -10,7 +10,8 @@
     "picoModal": "~2.0.1",
     "jquery.transit": "~0.9.12",
     "jquery.scrollTo": "~2.1.0",
-    "jquery.localScroll": "~1.4.0"
+    "jquery.localScroll": "~1.4.0",
+    "jquery.counter": "*"
   },
   "appPath": "app",
   "resolutions": {

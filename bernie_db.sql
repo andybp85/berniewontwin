@@ -11,7 +11,7 @@
  Target Server Version : 50623
  File Encoding         : utf-8
 
- Date: 05/02/2015 14:41:52 PM
+ Date: 05/03/2015 18:06:41 PM
 */
 
 SET NAMES utf8;
@@ -28,6 +28,6 @@ CREATE TABLE `bernie_signers` (
   `zip` smallint(6) DEFAULT NULL,
   `get_involved` bit(1) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 SET FOREIGN_KEY_CHECKS = 1;

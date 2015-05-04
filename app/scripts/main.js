@@ -10,6 +10,25 @@ window.onload = function(){
 
   document.getElementsByClassName('help-block')[0].addEventListener('click', privacy);
 
-  jQuery(function($){ $.localScroll({filter:'.smoothScroll'}); });
+  jQuery(function($){ 
+
+    $.localScroll({filter:'.smoothScroll'}); 
+
+    $.get('http://localhost/~andrew/berniewontwin/app/signers.php', function(data){
+      $('#votes-counter')
+        .text(data)
+        .addClass('counter counter-analog')
+        .counter({
+          initial: "0000",
+          direction: 'up',
+          format: "9999",
+          interval: 1,
+          stop: data
+        });
+
+    });
+
+
+  });
 
 };
