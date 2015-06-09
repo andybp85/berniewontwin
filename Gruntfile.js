@@ -11,7 +11,8 @@ module.exports = function(grunt) {
     // Configurable paths
     var config = {
         app: require('./bower.json').appPath || 'app',
-        dist: 'dist'
+        dist: 'dist',
+        tmp: '.tmp'
     };
 
 
@@ -22,16 +23,16 @@ module.exports = function(grunt) {
 
         // Watches files for changes and runs tasks based on the changed files
         watch: {
-          bower: {
-              files: ['bower.json'],
-              tasks: ['wiredep']
+            gruntfile: {
+                files: ['Gruntfile.js']
+            },
+            bower: {
+                files: ['bower.json'],
+                tasks: ['wiredep']
             },
             js: {
                 files: ['<%= config.app %>/scripts/{,*/}*.js'],
                 tasks: ['newer:jshint:all']
-            },
-            gruntfile: {
-                files: ['Gruntfile.js']
             },
             styles: {
                 files: ['<%= config.app %>/styles/{,*/}*.css'],
@@ -43,7 +44,8 @@ module.exports = function(grunt) {
                 },
                 files: [
                     '<%= config.app %>/{,*/}*.html',
-                    '.tmp/styles/{,*/}*.css',
+                    '<%= config.tmp %>/{,*/}*.css',
+                    '<%= config.tmp %>/{,*/}*.js',
                     '<%= config.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
@@ -55,28 +57,13 @@ module.exports = function(grunt) {
             files: [{
               dot: true,
               src: [
-                '.tmp',
+                '<%= config.tmp %>',
                 '<%= config.dist %>/{,*/}*',
                 '!<%= config.dist %>/.git*'
               ]
             }]
           },
-          server: '.tmp'
-        },
-
-        // Add vendor prefixed styles
-        autoprefixer: {
-          options: {
-            browsers: ['last 1 version']
-          },
-          dist: {
-            files: [{
-              expand: true,
-              cwd: '.tmp/styles/',
-              src: '{,*/}*.css',
-              dest: '.tmp/styles/'
-            }]
-          }
+          server: '<%= config.tmp %>'
         },
 
         // Automatically inject Bower components into the app
@@ -111,32 +98,67 @@ module.exports = function(grunt) {
               cwd: '<%= config.app %>',
               dest: '<%= config.dist %>',
               src: [
-                '*.{ico,png,txt}',
+                '*.{ico,png,txt,php}',
                 '.htaccess',
                 '*.html',
-                'partials/{,*/}*.html',
                 'images/{,*/}*.{webp}',
-                'fonts/*'
-              ]
-            }, {
-              expand: true,
-              cwd: '.tmp/images',
-              dest: '<%= config.dist %>/images',
-              src: ['generated/*']
-            }]
+                'styles/fonts/*'
+              ]}, {
+                expand: true,
+                cwd: '<%= config.tmp %>/images',
+                dest: '<%= config.dist %>/images',
+                src: ['generated/*']
+              }
+            ],
+            options: {
+              open: true,
+              base: '<%= config.dist %>'
+            }
           },
           styles: {
             expand: true,
             cwd: '<%= config.app %>/styles',
-            dest: '.tmp/styles/',
+            dest: '<%= config.tmp %>/styles/',
+            //src: '{,*/}*.css'
             src: '{,*/}*.css'
           }
         },
 
-        dist: {
+        // Reads HTML for usemin blocks to enable smart builds that automatically
+        // concat, minify and revision files. Creates configurations in memory so
+        // additional tasks can operate on them
+        useminPrepare: {
+          html: '<%= config.app %>/index.html',
+          css: '<%= config.tmp %>/styles/*.css',
           options: {
-            open: true,
-            base: '<%= config.dist %>'
+            dest: '<%= config.dist %>',
+            flow: {
+              html: {
+                steps: {
+                  js: ['concat', 'uglifyjs'],
+                  css: ['concat']
+                },
+                post: {}
+              }
+            }
+          }
+        },
+
+        // Performs rewrites based on filerev and the useminPrepare configuration
+        usemin: {
+          html: ['<%= config.dist %>/{,*/}*.html', '<%= config.dist %>/**/*.html', '<%= config.dist %>/**/*.html'],
+          js: ['<%= config.dist %>/scripts/{,*/}*.js','<%= config.dist %>/scripts/**/**.js' ],
+          css: ['<%= config.tmp %>/styles/{,*/}*.css','<%= config.dist %>/styles/{,*/}*.css'],
+          options: {
+            assetsDirs: ['<%= config.dist %>','<%= config.dist %>/images'],
+            patterns: {
+              js: [
+                  [/(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
+              ],
+              css: [
+                  [/(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the CSS to reference our revved images']
+              ]
+            }
           }
         },
 
@@ -154,70 +176,56 @@ module.exports = function(grunt) {
           }
         },
 
-        // Renames files for browser caching purposes
-        filerev: {
-          dist: {
-            src: [
-              '<%= config.dist %>/scripts/{,*/}*.js',
-              '<%= config.dist %>/styles/{,*/}*.css',
-              '<%= config.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-              '<%= config.dist %>/styles/fonts/*'
-            ]
-          }
-        },
+        /*
+        * CSS Scrubbers
+        */
 
+        // Clean unused css styles
         uncss: {
           dist: {
             options: {
-              stylesheets: ['../.tmp/styles/main.css']
+              csspath: '..',
+              stylesheets: ['<%= config.tmp %>/styles/main.css']
+                            //'<%= config.tmp %>/styles/vendor.css']
             },
             files: {
-              '../.tmp/styles/*.css': ['app/**/*.html']
+              '<%= config.tmp %>/styles/main.css' : ['<%= config.app %>/index.html']
+              //'<%= config.tmp %>/styles/vendor.css' : ['<%= config.app %>/index.html']
             }
           }
         },
+
+        // Add vendor prefixed styles
+        autoprefixer: {
+          options: {
+            browsers: ['last 1 version']
+          },
+          dist: {
+            files: [{
+              expand: true,
+              cwd: '<%= config.tmp %>/styles/',
+              src: ['main.css', 'vendor.css'],
+              dest: '<%= config.tmp %>/styles/'
+            }]
+          }
+        },
+
+        // Minify and optimize css styles
         cssnano: {
           options: {
               sourcemap: true
           },
           dist: {
               files: {
-                  'dist/styles/main.css': 'app/styles/main.css'
+                  '<%= config.dist %>/styles/main.css': '<%= config.tmp %>/styles/main.css'
+                  //'<%= config.dist %>/styles/vendor.css': '<%= config.tmp %>/styles/vendor.css'
               }
           }
         },
 
-        // Reads HTML for usemin blocks to enable smart builds that automatically
-        // concat, minify and revision files. Creates configurations in memory so
-        // additional tasks can operate on them
-        useminPrepare: {
-          html: '<%= config.app %>/index.html',
-          options: {
-            dest: '<%= config.dist %>',
-            flow: {
-              html: {
-                steps: {
-                  js: ['concat', 'uglifyjs'],
-                },
-                post: {}
-              }
-            }
-          }
-        },
-
-        // Performs rewrites based on filerev and the useminPrepare configuration
-        usemin: {
-          html: ['<%= config.dist %>/{,*/}*.html', '<%= config.dist %>/**/*.html', '<%= config.dist %>/**/*.html'],
-          js: ['<%= config.dist %>/scripts/{,*/}*.js','<%= config.dist %>/scripts/**/**.js' ],
-          options: {
-            assetsDirs: ['<%= config.dist %>','<%= config.dist %>/images'],
-            patterns: {
-              js: [
-                  [/(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
-              ]
-            }
-          }
-        },
+        /*
+        * Image optimizers
+        */
 
         imagemin: {
           dist: {
@@ -259,6 +267,19 @@ module.exports = function(grunt) {
           }
         },
 
+        // Renames files for browser caching purposes
+        filerev: {
+          dist: {
+            src: [
+              '<%= config.dist %>/scripts/{,*/}*.js',
+              '<%= config.dist %>/styles/{,*/}*.css',
+              '<%= config.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+              '<%= config.dist %>/styles/fonts/*',
+              '<%= config.dist %>/bower_components/**/*.{png,jpg,jpeg,gif,webp,svg,eot,ttf,woff}'
+            ]
+          }
+        },
+
         // Replace Google CDN references
         cdnify: {
           dist: {
@@ -279,7 +300,7 @@ module.exports = function(grunt) {
               open: true,
               middleware: function (connect) {
                 return [
-                  connect.static('.tmp'),
+                  connect.static('<%= config.tmp %>'),
                   connect().use(
                     '/bower_components',
                     connect.static('./bower_components')
@@ -314,13 +335,13 @@ module.exports = function(grunt) {
       'wiredep',
       'useminPrepare',
       'concurrent:dist',
-      'autoprefixer',
       'concat',
-      'uncss',
-      'cssnano',
+      'copy:dist',
       'cdnify',
       'uglify',
-      'copy:dist',
+      'uncss',
+      'autoprefixer',
+      'cssnano',
       'filerev',
       'usemin',
       'htmlmin'
@@ -328,7 +349,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', [
       'newer:jshint',
-      'test',
       'build'
     ]);
 };
