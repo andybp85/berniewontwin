@@ -114,7 +114,7 @@ module.exports = function(grunt) {
                 expand  : true,
                 flatten : true,
                 dest    : '<%= config.dist %>/styles',
-                src     : ['bower_components/jquery.counter/src/jquery.counter-analog*.png']
+                src     : ['bower_components/jquery.counter/src/jquery.counter-analog.png']
               },{
                 expand : true,
                 cwd    : '<%= config.tmp %>/scripts',

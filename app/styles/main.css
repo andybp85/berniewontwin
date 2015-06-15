@@ -12,11 +12,19 @@ body {
     display: block;
     width: 100%;
     text-align: center;
+    margin-bottom: -762px;
     background: url('../images/american_flag.jpg') no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+
+    border-style: solid;
+    border-width: 0px 0px 792px;
+    -moz-border-image: url('../images/bg-gradient-top.jpg') 0 0 792 round;
+    -webkit-border-image: url('../images/bg-gradient-top.jpg') 0 0 792 round;
+    -o-border-image: url('../images/bg-gradient-top.jpg') 0 0 792 round;
+    border-image: url('../images/bg-gradient-top.jpg') 0 0 792 round;
 }
 
 .headline {
@@ -52,7 +60,7 @@ body {
 }
 
 .featurette-heading {
-    font-size: 50px;
+    font-size: 73px;
 }
 
 .help-block {
@@ -62,6 +70,7 @@ body {
 footer {
     margin: 50px 0;
 }
+
 
 @media(max-width:1200px) {
     .headline h1 {
@@ -100,7 +109,7 @@ footer {
 
     .featurette-divider {
         margin: 40px 0;
-    }
+    } 
 
     .featurette-image {
         max-width: 50%;
