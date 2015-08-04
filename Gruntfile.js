@@ -105,6 +105,7 @@ module.exports = function(grunt) {
                 '*.html',
                 'images/{,*/}*.{webp}',
                 'styles/fonts/*'
+                //'vendor/{,*/}*'
               ]},{
                 expand : true,
                 cwd    : '<%= config.tmp %>/images',
@@ -117,7 +118,7 @@ module.exports = function(grunt) {
                 src     : ['bower_components/jquery.counter/src/jquery.counter-analog.png']
               },{
                 expand : true,
-                cwd    : '<%= config.tmp %>/scripts',
+                cwd    : '<%= config.tmp %>/concat/scripts',
                 dest   : '<%= config.dist %>/scripts',
                 src    : ['*.js']
 
@@ -352,14 +353,14 @@ module.exports = function(grunt) {
       'concat',
       'concurrent:dist',
       'cdnify',
-      'uglify',
+      //'uglify',
       'copy:dist',
       'uncss',
       'autoprefixer',
-      'cssnano',
+      //'cssnano',
       'filerev',
       'usemin',
-      'htmlmin'
+      //'htmlmin'
     ]);
     grunt.registerTask('default', [
       'newer:jshint',

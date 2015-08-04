@@ -18,9 +18,9 @@ $config = new \Doctrine\DBAL\Configuration();
 
 $connectionParams = array(
   'dbname'   => $_ENV['BERNIE_DB'],
-  'user'     => $_ENV['rwbahner_bernone'],
-  'password' => $_ENV['Goldenage150'],
-  'host'     => $_ENV['localhost'],
+  'user'     => $_ENV['BERNIE_DB_USER'],
+  'password' => $_ENV['BERNIE_DB_PASSWD'],
+  'host'     => $_ENV['BERNIE_DB_HOST'],
   'driver'   => 'pdo_mysql',
 );
 
