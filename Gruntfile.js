@@ -353,14 +353,14 @@ module.exports = function(grunt) {
       'concat',
       'concurrent:dist',
       'cdnify',
-      //'uglify',
+      'uglify',
       'copy:dist',
       'uncss',
       'autoprefixer',
-      //'cssnano',
+      'cssnano',
       'filerev',
       'usemin',
-      //'htmlmin'
+      'htmlmin'
     ]);
     grunt.registerTask('default', [
       'newer:jshint',
