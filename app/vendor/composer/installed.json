@@ -1,190 +1,5 @@
 [
     {
-        "name": "vlucas/phpdotenv",
-        "version": "v1.1.0",
-        "version_normalized": "1.1.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/vlucas/phpdotenv.git",
-            "reference": "732d2adb7d916c9593b9d58c3b0d9ebefead07aa"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/732d2adb7d916c9593b9d58c3b0d9ebefead07aa",
-            "reference": "732d2adb7d916c9593b9d58c3b0d9ebefead07aa",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.0"
-        },
-        "time": "2014-12-05 15:19:21",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Dotenv": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD"
-        ],
-        "authors": [
-            {
-                "name": "Vance Lucas",
-                "email": "vance@vancelucas.com",
-                "homepage": "http://www.vancelucas.com"
-            }
-        ],
-        "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
-        "homepage": "http://github.com/vlucas/phpdotenv",
-        "keywords": [
-            "dotenv",
-            "env",
-            "environment"
-        ]
-    },
-    {
-        "name": "symfony/console",
-        "version": "v2.6.6",
-        "version_normalized": "2.6.6.0",
-        "target-dir": "Symfony/Component/Console",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/Console.git",
-            "reference": "5b91dc4ed5eb08553f57f6df04c4730a73992667"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/Console/zipball/5b91dc4ed5eb08553f57f6df04c4730a73992667",
-            "reference": "5b91dc4ed5eb08553f57f6df04c4730a73992667",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "psr/log": "~1.0",
-            "symfony/event-dispatcher": "~2.1",
-            "symfony/phpunit-bridge": "~2.7",
-            "symfony/process": "~2.1"
-        },
-        "suggest": {
-            "psr/log": "For using the console logger",
-            "symfony/event-dispatcher": "",
-            "symfony/process": ""
-        },
-        "time": "2015-03-30 15:54:10",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.6-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Symfony\\Component\\Console\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
-            },
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Symfony Console Component",
-        "homepage": "http://symfony.com"
-    },
-    {
-        "name": "doctrine/cache",
-        "version": "v1.4.1",
-        "version_normalized": "1.4.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/cache.git",
-            "reference": "c9eadeb743ac6199f7eec423cb9426bc518b7b03"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/cache/zipball/c9eadeb743ac6199f7eec423cb9426bc518b7b03",
-            "reference": "c9eadeb743ac6199f7eec423cb9426bc518b7b03",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2"
-        },
-        "conflict": {
-            "doctrine/common": ">2.2,<2.4"
-        },
-        "require-dev": {
-            "phpunit/phpunit": ">=3.7",
-            "predis/predis": "~1.0",
-            "satooshi/php-coveralls": "~0.6"
-        },
-        "time": "2015-04-15 00:11:59",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.5.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\Common\\Cache\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com"
-            },
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com"
-            },
-            {
-                "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com"
-            }
-        ],
-        "description": "Caching library offering an object-oriented API for many cache backends",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "cache",
-            "caching"
-        ]
-    },
-    {
         "name": "doctrine/lexer",
         "version": "v1.0.1",
         "version_normalized": "1.0.1.0",
@@ -311,6 +126,191 @@
         ]
     },
     {
+        "name": "doctrine/inflector",
+        "version": "v1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/inflector.git",
+            "reference": "0bcb2e79d8571787f18b7eb036ed3d004908e604"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/inflector/zipball/0bcb2e79d8571787f18b7eb036ed3d004908e604",
+            "reference": "0bcb2e79d8571787f18b7eb036ed3d004908e604",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*"
+        },
+        "time": "2014-12-20 21:24:13",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\Inflector\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Common String Manipulations with regard to casing and singular/plural rules.",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "inflection",
+            "pluralize",
+            "singularize",
+            "string"
+        ]
+    },
+    {
+        "name": "symfony/console",
+        "version": "v2.6.6",
+        "version_normalized": "2.6.6.0",
+        "target-dir": "Symfony/Component/Console",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/Console.git",
+            "reference": "5b91dc4ed5eb08553f57f6df04c4730a73992667"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/Console/zipball/5b91dc4ed5eb08553f57f6df04c4730a73992667",
+            "reference": "5b91dc4ed5eb08553f57f6df04c4730a73992667",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "psr/log": "~1.0",
+            "symfony/event-dispatcher": "~2.1",
+            "symfony/phpunit-bridge": "~2.7",
+            "symfony/process": "~2.1"
+        },
+        "suggest": {
+            "psr/log": "For using the console logger",
+            "symfony/event-dispatcher": "",
+            "symfony/process": ""
+        },
+        "time": "2015-03-30 15:54:10",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.6-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\Console\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Symfony Console Component",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "doctrine/instantiator",
+        "version": "1.0.4",
+        "version_normalized": "1.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/instantiator.git",
+            "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/instantiator/zipball/f976e5de371104877ebc89bd8fecb0019ed9c119",
+            "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3,<8.0-DEV"
+        },
+        "require-dev": {
+            "athletic/athletic": "~0.1.8",
+            "ext-pdo": "*",
+            "ext-phar": "*",
+            "phpunit/phpunit": "~4.0",
+            "squizlabs/php_codesniffer": "2.0.*@ALPHA"
+        },
+        "time": "2014-10-13 12:58:55",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Instantiator\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Marco Pivetta",
+                "email": "ocramius@gmail.com",
+                "homepage": "http://ocramius.github.com/"
+            }
+        ],
+        "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
+        "homepage": "https://github.com/doctrine/instantiator",
+        "keywords": [
+            "constructor",
+            "instantiate"
+        ]
+    },
+    {
         "name": "doctrine/collections",
         "version": "v1.3.0",
         "version_normalized": "1.3.0.0",
@@ -379,37 +379,42 @@
         ]
     },
     {
-        "name": "doctrine/inflector",
-        "version": "v1.0.1",
-        "version_normalized": "1.0.1.0",
+        "name": "doctrine/cache",
+        "version": "v1.4.1",
+        "version_normalized": "1.4.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/doctrine/inflector.git",
-            "reference": "0bcb2e79d8571787f18b7eb036ed3d004908e604"
+            "url": "https://github.com/doctrine/cache.git",
+            "reference": "c9eadeb743ac6199f7eec423cb9426bc518b7b03"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/inflector/zipball/0bcb2e79d8571787f18b7eb036ed3d004908e604",
-            "reference": "0bcb2e79d8571787f18b7eb036ed3d004908e604",
+            "url": "https://api.github.com/repos/doctrine/cache/zipball/c9eadeb743ac6199f7eec423cb9426bc518b7b03",
+            "reference": "c9eadeb743ac6199f7eec423cb9426bc518b7b03",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.2"
         },
-        "require-dev": {
-            "phpunit/phpunit": "4.*"
+        "conflict": {
+            "doctrine/common": ">2.2,<2.4"
         },
-        "time": "2014-12-20 21:24:13",
+        "require-dev": {
+            "phpunit/phpunit": ">=3.7",
+            "predis/predis": "~1.0",
+            "satooshi/php-coveralls": "~0.6"
+        },
+        "time": "2015-04-15 00:11:59",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.0.x-dev"
+                "dev-master": "1.5.x-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-0": {
-                "Doctrine\\Common\\Inflector\\": "lib/"
+                "Doctrine\\Common\\Cache\\": "lib/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -438,13 +443,11 @@
                 "email": "schmittjoh@gmail.com"
             }
         ],
-        "description": "Common String Manipulations with regard to casing and singular/plural rules.",
+        "description": "Caching library offering an object-oriented API for many cache backends",
         "homepage": "http://www.doctrine-project.org",
         "keywords": [
-            "inflection",
-            "pluralize",
-            "singularize",
-            "string"
+            "cache",
+            "caching"
         ]
     },
     {
@@ -520,62 +523,6 @@
             "eventmanager",
             "persistence",
             "spl"
-        ]
-    },
-    {
-        "name": "doctrine/instantiator",
-        "version": "1.0.4",
-        "version_normalized": "1.0.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/instantiator.git",
-            "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/instantiator/zipball/f976e5de371104877ebc89bd8fecb0019ed9c119",
-            "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3,<8.0-DEV"
-        },
-        "require-dev": {
-            "athletic/athletic": "~0.1.8",
-            "ext-pdo": "*",
-            "ext-phar": "*",
-            "phpunit/phpunit": "~4.0",
-            "squizlabs/php_codesniffer": "2.0.*@ALPHA"
-        },
-        "time": "2014-10-13 12:58:55",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\Instantiator\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Marco Pivetta",
-                "email": "ocramius@gmail.com",
-                "homepage": "http://ocramius.github.com/"
-            }
-        ],
-        "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
-        "homepage": "https://github.com/doctrine/instantiator",
-        "keywords": [
-            "constructor",
-            "instantiate"
         ]
     },
     {
@@ -728,6 +675,59 @@
         "keywords": [
             "database",
             "orm"
+        ]
+    },
+    {
+        "name": "vlucas/phpdotenv",
+        "version": "v1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/vlucas/phpdotenv.git",
+            "reference": "732d2adb7d916c9593b9d58c3b0d9ebefead07aa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/732d2adb7d916c9593b9d58c3b0d9ebefead07aa",
+            "reference": "732d2adb7d916c9593b9d58c3b0d9ebefead07aa",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2014-12-05 15:19:21",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Dotenv": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD"
+        ],
+        "authors": [
+            {
+                "name": "Vance Lucas",
+                "email": "vance@vancelucas.com",
+                "homepage": "http://www.vancelucas.com"
+            }
+        ],
+        "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
+        "homepage": "http://github.com/vlucas/phpdotenv",
+        "keywords": [
+            "dotenv",
+            "env",
+            "environment"
         ]
     }
 ]

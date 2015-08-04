@@ -10,7 +10,7 @@
 header("Access-Control-Allow-Origin: *");
 // YES THIS ^^^^
 
-require '../vendor/autoload.php'; // grab the composer classes
+require './vendor/autoload.php'; // grab the composer classes
 Dotenv::load('..'); // grab the db connection info out of the environment
 
 // set up the database connection; using Doctrine for future-proof-ness

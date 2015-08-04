@@ -104,8 +104,8 @@ module.exports = function(grunt) {
                 '.htaccess',
                 '*.html',
                 'images/{,*/}*.{webp}',
-                'styles/fonts/*'
-                //'vendor/{,*/}*'
+                'styles/fonts/*',
+                'vendor/**'
               ]},{
                 expand : true,
                 cwd    : '<%= config.tmp %>/images',
