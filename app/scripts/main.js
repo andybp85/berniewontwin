@@ -19,7 +19,7 @@ jQuery(function($){
 
   $.localScroll({filter:'.smoothScroll'}); 
 
-  $.get('http://berniewontwin.org/signers.php', function(data){
+  $.get('/signers.php', function(data){
     $('#votes-counter')
       .text(data)
       .addClass('counter counter-analog')
