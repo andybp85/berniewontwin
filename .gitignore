@@ -5,7 +5,7 @@
 *.swp
 
 node_modules/
-vendor/
+# vendor/
 dist/
 bower_components/
 .tmp
